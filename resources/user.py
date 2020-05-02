@@ -1,4 +1,5 @@
 from flask_restplus import Resource, Namespace, fields
+from flask import jsonify
 from security import token_required
 from models.user import User 
 
@@ -18,7 +19,7 @@ class Register(Resource):
         data = register_ns.payload
         user = User(**data)
         user.save_to_db()
-        return {"message":"User added"}
+        return jsonify({"message":"User added"})
 
     @register_ns.expect(user_model)
     #@register_ns.doc(security='apikey')
@@ -31,9 +32,9 @@ class Register(Resource):
         if user:
             user.password = data["password"]
             user.save_to_db()
-            return {"message":"User updated"}
+            return jsonify({"message":"User updated"})
 
-        return {"message":"User not found"},404
+        return jsonify({"message":"User not found"}),404
 
     @register_ns.expect(user_model)
     #@register_ns.doc(security='apikey')
@@ -44,5 +45,5 @@ class Register(Resource):
 
         if user:
             user.delete_from_db()
-            return {"message":"User deleted"}
-        return {"message":"User not found"},404
+            return jsonify({"message":"User deleted"})
+        return jsonify({"message":"User not found"}),404
