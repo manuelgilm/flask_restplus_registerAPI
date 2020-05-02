@@ -7,7 +7,6 @@ from models.user import User
 from resources.user import register_ns, Register
 
 from security import token_required
-from db import db
 
 app = Flask(__name__)
 
@@ -32,5 +31,6 @@ def create_tables():
     db.create_all()
 
 if __name__ == "__main__":
+    from db import db
     db.init_app(app)
     app.run()
