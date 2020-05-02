@@ -1,0 +1,6 @@
+Flask
+Flask-restplus
+Flask-SQLAlchemy
+WerkZeug==0.16.0
+uwsgi
+psycopg2
