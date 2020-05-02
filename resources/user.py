@@ -8,8 +8,8 @@ user_model = register_ns.model("User",{"username":fields.String("first name"),"p
 @register_ns.route("/register")
 class Register(Resource):
 
-    @register_ns.doc(security='apikey')
-    @token_required
+    #@register_ns.doc(security='apikey')
+    #@token_required
     def get(self):
         return User.get_users()
 
@@ -21,8 +21,8 @@ class Register(Resource):
         return {"message":"User added"}
 
     @register_ns.expect(user_model)
-    @register_ns.doc(security='apikey')
-    @token_required
+    #@register_ns.doc(security='apikey')
+    #@token_required
     def put(self):
 
         data = register_ns.payload
@@ -36,8 +36,8 @@ class Register(Resource):
         return {"message":"User not found"},404
 
     @register_ns.expect(user_model)
-    @register_ns.doc(security='apikey')
-    @token_required
+    #@register_ns.doc(security='apikey')
+    #@token_required
     def delete(self):
         data = register_ns.payload
         user = User.find_user_by_username(data["username"])
