@@ -4,7 +4,7 @@ from flask import Flask, jsonify
 from flask_restplus import Api
 
 from models.user import User
-from resources.user import register_ns
+from resources.user import register_ns, Register
 
 from security import token_required
 from db import db
@@ -25,6 +25,7 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 
 api = Api(app,authorizations=authorizations)
 api.add_namespace(register_ns)
+api.add_resource(Register,"\register")
 
 @app.before_first_request
 def create_tables():

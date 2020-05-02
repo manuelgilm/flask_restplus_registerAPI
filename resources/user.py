@@ -6,7 +6,7 @@ from models.user import User
 register_ns = Namespace('register')
 user_model = register_ns.model("User",{"username":fields.String("first name"),"password":fields.String("a secret password")})
 
-@register_ns.route("/register")
+#@register_ns.route("/register")
 class Register(Resource):
 
     #@register_ns.doc(security='apikey')
