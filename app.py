@@ -25,7 +25,7 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 
 api = Api(app,authorizations=authorizations)
 api.add_namespace(register_ns)
-api.add_resource(Register,"\register")
+api.add_resource(Register,"/register")
 
 @app.before_first_request
 def create_tables():
